@@ -1,0 +1,145 @@
+/* 引入一个更具科技感的字体 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+/* --- 基础与背景 --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    /* 使用深邃的径向渐变作为静态背景 */
+    background: radial-gradient(ellipse at center, #1b2735 0%, #090a0f 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- 聊天窗口 --- */
+#chat-window {
+    width: 90%;
+    max-width: 700px;
+    height: 85vh;
+    background: rgba(13, 27, 42, 0.8);
+    border: 1px solid rgba(57, 255, 220, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(57, 255, 220, 0.1);
+    overflow: hidden;
+}
+
+/* --- 聊天窗口头部 --- */
+#chat-header {
+    padding: 15px 25px;
+    border-bottom: 1px solid rgba(57, 255, 220, 0.2);
+    flex-shrink: 0;
+}
+
+.title {
+    color: #e0fbfc;
+    font-size: 1.8rem;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(57, 255, 220, 0.5);
+}
+
+/* --- 消息显示区域 --- */
+#chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    color: #e0fbfc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 25px;
+}
+
+.message { 
+    padding: 12px 18px; 
+    border-radius: 8px; 
+    max-width: 85%; 
+    word-wrap: break-word; 
+    line-height: 1.6;
+    font-weight: 300;
+    border: 1px solid transparent;
+}
+
+.user-message { 
+    background-color: rgba(57, 185, 255, 0.1); 
+    border-color: rgba(57, 185, 255, 0.3);
+    color: #d1faff; 
+    align-self: flex-end; 
+    border-bottom-right-radius: 2px; 
+}
+
+.assistant-message {
+    background-color: transparent; 
+    color: #e0fbfc; 
+    align-self: flex-start; 
+    border-bottom-left-radius: 2px;
+    border: 1px solid rgba(57, 255, 220, 0.2);
+}
+
+/* --- 输入区域 --- */
+#chat-input-container { 
+    display: flex; 
+    gap: 10px; 
+    flex-shrink: 0; 
+    align-items: center;
+    padding: 20px 25px;
+    border-top: 1px solid rgba(57, 255, 220, 0.2);
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 14px;
+    border: 1px solid rgba(57, 255, 220, 0.3);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #e0fbfc;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    min-width: 0;
+}
+
+#chat-input::placeholder { color: rgba(224, 251, 252, 0.4); }
+#chat-input:focus { 
+    outline: none; 
+    border-color: #39ffd8; 
+    box-shadow: 0 0 12px rgba(57, 255, 220, 0.4); 
+}
+
+#send-button {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    font-size: 1.3rem;
+    cursor: pointer;
+    background-color: rgba(57, 255, 220, 0.1);
+    color: #e0fbfc;
+    border: 1px solid rgba(57, 255, 220, 0.3);
+    border-radius: 6px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#send-button:hover { 
+    background-color: rgba(57, 255, 220, 0.3);
+    box-shadow: 0 0 10px rgba(57, 255, 220, 0.3);
+}
+#send-button:active { transform: scale(0.95); }
+#send-button:disabled { opacity: 0.4; cursor: not-allowed; background-color: transparent; }
+
+/* --- 美化滚动条 --- */
+#chat-messages::-webkit-scrollbar { width: 8px; }
+#chat-messages::-webkit-scrollbar-track { background: transparent; }
+#chat-messages::-webkit-scrollbar-thumb { background-color: rgba(57, 255, 220, 0.2); border-radius: 4px; }
+#chat-messages::-webkit-scrollbar-thumb:hover { background-color: rgba(57, 255, 220, 0.5); }
