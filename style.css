@@ -31,6 +31,8 @@ body, html {
     box-sizing: border-box;
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(57, 255, 220, 0.1);
     overflow: hidden;
+    /* --- 新增的动画属性 --- */
+    animation: breathing-glow 5s ease-in-out infinite;
 }
 
 /* --- 聊天窗口头部 --- */
@@ -143,3 +145,26 @@ body, html {
 #chat-messages::-webkit-scrollbar-track { background: transparent; }
 #chat-messages::-webkit-scrollbar-thumb { background-color: rgba(57, 255, 220, 0.2); border-radius: 4px; }
 #chat-messages::-webkit-scrollbar-thumb:hover { background-color: rgba(57, 255, 220, 0.5); }
+
+
+/* --- 呼吸辉光动画 --- */
+@keyframes breathing-glow {
+    0% {
+        border-color: rgba(57, 255, 220, 0.3);
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.7), 
+                    inset 0 0 20px rgba(57, 255, 220, 0.1),
+                    0 0 15px rgba(57, 255, 220, 0.1); /* 新增外部辉光 */
+    }
+    50% {
+        border-color: rgba(57, 255, 220, 0.6); /* 边框变亮 */
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.7), 
+                    inset 0 0 20px rgba(57, 255, 220, 0.1),
+                    0 0 25px rgba(57, 255, 220, 0.4); /* 外部辉光增强 */
+    }
+    100% {
+        border-color: rgba(57, 255, 220, 0.3);
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.7), 
+                    inset 0 0 20px rgba(57, 255, 220, 0.1),
+                    0 0 15px rgba(57, 255, 220, 0.1); /* 辉光恢复 */
+    }
+}
